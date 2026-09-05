@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoshihito Tsuji — Future University Hakodate</title>
+<meta name="description" content="Yoshihito Tsuji, Ph.D. (Information Science). Associate Professor, Intelligent Information Science Research Area, Future University Hakodate. Software development and cognitive modeling of explanatory communication.">
+<style>
+  :root{
+    --bg:#fbfbfa; --fg:#1c1c1a; --muted:#6b6b63; --rule:#e2e1dc;
+    --accent:#3a5a78; --card:#ffffff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#16161a; --fg:#e8e8e4; --muted:#9a9a92; --rule:#2e2e34;
+           --accent:#8fb4d4; --card:#1d1d22; }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
+      "Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px 80px}
+  header{padding:56px 0 28px; border-bottom:1px solid var(--rule)}
+  h1{font-size:1.85rem; margin:0 0 6px; letter-spacing:.01em}
+  h1 .ja{font-size:1.05rem; color:var(--muted); font-weight:500; margin-left:10px}
+  .role{color:var(--muted); margin:0; font-size:.95rem}
+  .role a{color:var(--accent)}
+  h2{
+    font-size:1.05rem; letter-spacing:.08em; text-transform:uppercase;
+    margin:48px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--rule);
+    color:var(--muted); font-weight:600;
+  }
+  h2[lang="ja"]{text-transform:none; letter-spacing:.04em}
+  p{margin:0 0 14px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  .item{
+    background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    padding:16px 18px; margin:0 0 12px;
+  }
+  .item h3{margin:0 0 4px; font-size:1rem}
+  .item p{margin:0 0 8px; font-size:.93rem; color:var(--fg)}
+  .meta{font-size:.85rem; color:var(--muted); margin:0}
+  .links{display:flex; flex-wrap:wrap; gap:8px 14px; font-size:.88rem; margin-top:8px}
+  ul{margin:0 0 14px; padding-left:1.25em}
+  li{margin-bottom:6px}
+  .toggle{
+    position:fixed; top:16px; right:16px; z-index:10;
+    background:var(--card); border:1px solid var(--rule); border-radius:999px;
+    padding:6px 4px; display:flex; gap:2px; box-shadow:0 1px 6px rgba(0,0,0,.06);
+  }
+  .toggle button{
+    border:0; background:transparent; color:var(--muted); cursor:pointer;
+    font:inherit; font-size:.82rem; padding:3px 12px; border-radius:999px;
+  }
+  .toggle button[aria-pressed="true"]{background:var(--accent); color:#fff}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);
+         font-size:.85rem; color:var(--muted)}
+  [data-lang]{display:none}
+  html[data-active="en"] [data-lang="en"]{display:revert}
+  html[data-active="ja"] [data-lang="ja"]{display:revert}
+</style>
+</head>
+<body>
+
+<nav class="toggle" aria-label="Language">
+  <button id="btn-en" aria-pressed="true">EN</button>
+  <button id="btn-ja" aria-pressed="false">日本語</button>
+</nav>
+
+<div class="wrap">
+
+<header>
+  <h1>Yoshihito Tsuji<span class="ja">辻 義人</span></h1>
+  <p class="role" data-lang="en">
+    Ph.D. (Information Science) &middot; Associate Professor<br>
+    Intelligent Information Science Research Area / Center for Meta-Learning<br>
+    <a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">Future University Hakodate</a>, Hokkaido, Japan
+  </p>
+  <p class="role" data-lang="ja">
+    博士（情報科学）／准教授<br>
+    知能情報科学領域／メタ学習センター<br>
+    <a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">公立はこだて未来大学</a>（北海道・函館）
+  </p>
+</header>
+
+<h2 data-lang="en">Research</h2>
+<h2 lang="ja" data-lang="ja">研究</h2>
+
+<div data-lang="en">
+  <p>My work sits between software engineering and the quantitative modeling of human
+  explanatory behaviour. I design, implement and distribute the applications that my
+  studies run on, and I use the behavioural data they collect to build and test
+  computational models of how speakers adapt an explanation to a listener.</p>
+  <p>Three strands run through the group:</p>
+  <ul>
+    <li><strong>Application development and distribution.</strong> On-device speech
+    recognition, data-visualisation tools and browser-based simulators, released on
+    public app stores and maintained as production software.</li>
+    <li><strong>Cognitive modeling of explanatory dialogue.</strong> A measurement
+    instrument for a speaker's awareness of the listener, and quantitative validation of
+    the model against behavioural data collected in controlled settings.</li>
+    <li><strong>Generative AI in application development.</strong> Human&ndash;AI
+    collaborative software construction, including the multi-agent development workflow
+    used to build the tools listed below.</li>
+  </ul>
+</div>
+
+<div data-lang="ja">
+  <p>ソフトウェアの設計・実装と、人間の説明行動の定量的モデル化の境界を研究領域としています。
+  研究に用いるアプリケーションは自ら設計・実装して配布し、そこで得られる行動データを用いて、
+  話し手が聞き手に応じて説明をどう調整するかの計算モデルを構築・検証しています。</p>
+  <p>研究の柱は次の3つです。</p>
+  <ul>
+    <li><strong>アプリケーションの開発と配布。</strong>
+    端末内で完結する音声認識、データ可視化ツール、ブラウザ上で動作するシミュレータを、
+    公開ストアでリリースし、実運用のソフトウェアとして保守しています。</li>
+    <li><strong>説明対話の認知モデル化。</strong>
+    話し手の受け手意識を測定する尺度の構成と、統制された条件下で取得した行動データによる
+    モデルの定量的検証を行っています。</li>
+    <li><strong>生成AIを用いたアプリケーション開発。</strong>
+    人間とAIの協働によるソフトウェア構築。下記のツール群も、この多エージェント開発フローで
+    作られています。</li>
+  </ul>
+</div>
+
+<h2 data-lang="en">Research Group</h2>
+<h2 lang="ja" data-lang="ja">研究グループ</h2>
+
+<div data-lang="en">
+  <p>A small group of three, including the principal investigator:</p>
+  <ul>
+    <li><strong>Principal investigator</strong> &mdash; Yoshihito Tsuji</li>
+    <li><strong>Collaborator</strong> &mdash; a former student of the laboratory, now
+    working with me on application development in the context of science
+    communication.</li>
+    <li><strong>Collaborator</strong> &mdash; a co-investigator on a submitted research
+    proposal, whom I am currently mentoring in generative-AI application
+    development.</li>
+  </ul>
+</div>
+
+<div data-lang="ja">
+  <p>研究代表者を含む3名の小規模なグループです。</p>
+  <ul>
+    <li><strong>研究代表者</strong>&emsp;辻 義人</li>
+    <li><strong>共同研究者</strong>&emsp;当研究室の卒業生。サイエンスコミュニケーションの
+    文脈でのアプリケーション開発を共同で進めています。</li>
+    <li><strong>共同研究者</strong>&emsp;申請中の研究課題の共同研究者。
+    生成AIを用いたアプリケーション開発の指導を行っています。</li>
+  </ul>
+</div>
+
+<h2 data-lang="en">Funding</h2>
+<h2 lang="ja" data-lang="ja">研究資金</h2>
+
+<div class="item">
+  <h3>JSPS KAKENHI 23K02662</h3>
+  <p data-lang="en">Grant-in-Aid for Scientific Research (C) &mdash;
+  <em>A foundational study toward the instruction of oral explanation based on a
+  listener-awareness scale.</em></p>
+  <p data-lang="ja">科学研究費助成事業 基盤研究(C) &mdash;
+  「口頭説明受け手意識尺度に基づく口頭説明の指導に向けた基礎的検討」</p>
+  <p class="meta" data-lang="en">Principal investigator &middot; FY2023&ndash;2026 &middot;
+  <a href="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-23K02662/">KAKEN database</a></p>
+  <p class="meta" data-lang="ja">研究代表者／2023&ndash;2026年度／
+  <a href="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-23K02662/">KAKEN データベース</a></p>
+</div>
+
+<h2 data-lang="en">Software</h2>
+<h2 lang="ja" data-lang="ja">ソフトウェア</h2>
+
+<div class="item">
+  <h3>GaQ Offline Transcriber</h3>
+  <p data-lang="en">A fully offline speech-to-text application for Windows and macOS.
+  All recognition runs on the local device; no audio leaves the machine. Built for
+  research interviews and classroom recordings where the data cannot be sent to a
+  cloud service.</p>
+  <p data-lang="ja">Windows / macOS 向けの完全オフライン文字起こしアプリケーション。
+  音声認識はすべて端末内で完結し、音声データは外部に送信されません。
+  クラウドに送れない研究面接や授業記録での利用を想定しています。</p>
+  <p class="links">
+    <a href="https://apps.microsoft.com/detail/9mz5t4fx1qq0">Microsoft Store</a>
+    <a href="https://yoshihito-tsuji.github.io/gaq-privacy-policy/">Privacy policy</a>
+  </p>
+</div>
+
+<div class="item">
+  <h3>PoPuP</h3>
+  <p data-lang="en">A population-pyramid construction tool for iOS, macOS and Windows,
+  used for teaching demographic data literacy.</p>
+  <p data-lang="ja">iOS / macOS / Windows 向けの人口ピラミッド作成ツール。
+  人口統計データのリテラシー教育で使用しています。</p>
+  <p class="links">
+    <a href="https://apps.apple.com/jp/app/id6758370738">App Store</a>
+    <a href="https://github.com/yoshihito-tsuji/popup-releases">Releases</a>
+    <a href="https://github.com/yoshihito-tsuji/popup-support">Support</a>
+  </p>
+</div>
+
+<div class="item">
+  <h3>Monty Hall Simulator</h3>
+  <p data-lang="en">A single-file, dependency-free browser simulator of the Monty Hall
+  problem, localised into 12 languages. Used to make conditional probability tractable
+  by direct experiment rather than derivation.</p>
+  <p data-lang="ja">モンティホール問題を体験できる、単一 HTML・依存関係なしの
+  シミュレータ（12言語対応）。条件付き確率を、導出ではなく実際に試すことで
+  つかめるようにしたものです。</p>
+  <p class="links">
+    <a href="https://yoshihito-tsuji.github.io/monty-hall/">Live demo</a>
+    <a href="https://github.com/yoshihito-tsuji/monty-hall">Source</a>
+  </p>
+</div>
+
+<div class="item">
+  <h3>SPChart</h3>
+  <p data-lang="en">A tool that builds S&ndash;P (Student&ndash;Problem) charts
+  automatically, supporting item analysis of classroom tests. Developed through a
+  human&ndash;AI collaborative workflow.</p>
+  <p data-lang="ja">S-P 表を自動生成し、テストの項目分析を支援するツール。
+  生成AIとの協働開発フローで作成しています。</p>
+  <p class="links">
+    <a href="https://github.com/yoshihito-tsuji/SPChart">Source</a>
+  </p>
+</div>
+
+<h2 data-lang="en">Selected Publications</h2>
+<h2 lang="ja" data-lang="ja">主要業績</h2>
+
+<div data-lang="en">
+  <ol>
+    <li>Tsuji, Y. (2026). Possibilities and constraints of generative AI in educational
+    practice: a case study of application development by a teacher.
+    <em>Proceedings of the CIEC Spring Conference 2026</em>, 99&ndash;102, short paper (S-6).</li>
+    <li>Tsuji, Y. (2025). Proposals on generative AI and science education.
+    <em>Rika no Kyoiku</em> (Japan Society for Science Education), 74(881), 9&ndash;12, December 2025.
+    <span class="meta">(invited)</span></li>
+    <li>Tsuji, Y. (2018). Background factors of comprehensible explanatory texts based on
+    an audience-awareness scale. <em>IPSJ SIG Technical Report, Document and Media
+    Communication</em>, 2018-DC-109(5), 1&ndash;8. <span class="meta">(peer-reviewed)
+    &mdash; <strong>Yamashita Memorial Research Award, IPSJ, 2020</strong></span></li>
+    <li>Rzepka, R., Kimura, Y., Tsuji, Y., &amp; Takamaru, K. (2016). Prototyping
+    Radiobots: automatic radio talks generator considering live feedback from listeners.
+    <em>Workshop on Chatbots and Conversational Agents (WOCHAT)</em>.
+    <span class="meta">(peer-reviewed)</span></li>
+    <li>Tsuji, Y. (2017). Effectiveness of active learning within a single course.
+    <em>Japan Journal of Educational Technology</em>, 40(Suppl.), 45&ndash;48.
+    <span class="meta">(peer-reviewed)</span></li>
+    <li>Tsuji, Y. (2007). <em>Explanatory activity that promotes learners' acquisition of
+    procedural knowledge.</em> Doctoral dissertation, Graduate School of Information
+    Sciences, Tohoku University.</li>
+    <li>Tsuji, Y. (2006). Background factors determining computer users' operational
+    skills. <em>Japan Journal of Educational Technology</em>, 29, 185&ndash;188.
+    <span class="meta">(peer-reviewed)</span></li>
+    <li>Tsuji, Y., &amp; Nakamura, M. (2004). Development of scales for computer
+    operation skill and for explanatory skill, from a teacher-education perspective.
+    <em>Transactions of the Japanese Society for Information and Systems in Education</em>,
+    21(3), 296&ndash;304. <span class="meta">(peer-reviewed)</span></li>
+  </ol>
+  <p class="meta">A complete list of 66 items is available on
+  <a href="https://researchmap.jp/tsuji-yoshihito">researchmap</a>.</p>
+</div>
+
+<div data-lang="ja">
+  <ol>
+    <li>辻義人（2026）教育活動における生成AI活用の可能性と制約 &mdash; 教育用アプリ作成をとおした
+    教員による実践事例 &mdash;. <em>CIEC春季カンファレンス2026 発表論文集</em>, 99&ndash;102, ショートペーパー（S-6）.</li>
+    <li>辻義人（2025）生成AIと理科教育についての提言. <em>理科の教育</em>（日本理科教育学会）, 74(881), 9&ndash;12, 2025年12月. <span class="meta">（招待）</span></li>
+    <li>辻義人（2018）読み手意識（Audience Awareness）尺度に基づく「わかりやすい説明文章」の
+    背景要因の検討. <em>情報処理学会研究報告 ドキュメントコミュニケーション</em>,
+    2018-DC-109(5), 1&ndash;8. <span class="meta">（査読有）&mdash;
+    <strong>山下記念研究賞・情報処理学会（2020）</strong></span></li>
+    <li>Rzepka, R., Kimura, Y., 辻義人, Takamaru, K.（2016）Prototyping Radiobots:
+    Automatic Radio Talks Generator Considering Live Feedback from Listeners.
+    <em>Workshop on Chatbots and Conversational Agents (WOCHAT)</em>.
+    <span class="meta">（査読有・国際）</span></li>
+    <li>辻義人（2017）同一科目を対象としたアクティブラーニング授業の効果検証.
+    <em>日本教育工学会論文誌</em>, 40(Suppl.), 45&ndash;48.
+    <span class="meta">（査読有）</span></li>
+    <li>辻義人（2007）<em>学習者の手続き的知識の獲得を促す説明活動のあり方.</em>
+    博士論文, 東北大学大学院情報科学研究科.</li>
+    <li>辻義人（2006）コンピュータ学習者の操作技能を規定する背景要因の検討.
+    <em>日本教育工学会論文誌</em>, 29, 185&ndash;188.
+    <span class="meta">（査読有）</span></li>
+    <li>辻義人・中村光伴（2004）教師教育の観点に基づくパソコン操作技能とパソコン操作に関する
+    説明技能の測定尺度の開発. <em>教育システム情報学会誌</em>, 21(3), 296&ndash;304.
+    <span class="meta">（査読有）</span></li>
+  </ol>
+  <p class="meta">全66件は <a href="https://researchmap.jp/tsuji-yoshihito">researchmap</a>
+  に掲載しています。</p>
+</div>
+
+<h2 data-lang="en">Background &amp; Recognition</h2>
+<h2 lang="ja" data-lang="ja">経歴と受賞</h2>
+
+<div data-lang="en">
+  <ul>
+    <li><strong>Ph.D. in Information Science</strong>, Tohoku University</li>
+    <li>M.Ed., Tokyo Gakugei University</li>
+    <li><strong>Yamashita Memorial Research Award</strong>, Information Processing
+    Society of Japan (IPSJ)</li>
+    <li>Member: Information Processing Society of Japan; Japanese Psychological
+    Association; Japan Society for Educational Technology</li>
+  </ul>
+</div>
+
+<div data-lang="ja">
+  <ul>
+    <li><strong>博士（情報科学）</strong>　東北大学</li>
+    <li>修士（教育学）　東京学芸大学</li>
+    <li><strong>山下記念研究賞</strong>　情報処理学会（2020年）</li>
+    <li>所属学会：情報処理学会／日本心理学会／日本教育工学会</li>
+  </ul>
+</div>
+
+<h2 data-lang="en">Links</h2>
+<h2 lang="ja" data-lang="ja">リンク</h2>
+
+<ul>
+  <li><a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">Future University Hakodate — faculty page</a></li>
+  <li><a href="https://researchmap.jp/tsuji-yoshihito">researchmap</a></li>
+  <li><a href="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-23K02662/">KAKEN — 23K02662</a></li>
+  <li><a href="https://github.com/yoshihito-tsuji">GitHub</a></li>
+</ul>
+
+<h2 data-lang="en">Contact</h2>
+<h2 lang="ja" data-lang="ja">連絡先</h2>
+
+<p>y-tsuji<span>&#64;</span>fun.ac.jp</p>
+
+<footer>
+  <span data-lang="en">Last updated: September 2026</span>
+  <span data-lang="ja">最終更新：2026年9月</span>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var html = document.documentElement;
+  var en = document.getElementById('btn-en');
+  var ja = document.getElementById('btn-ja');
+  function set(lang){
+    html.setAttribute('data-active', lang);
+    html.setAttribute('lang', lang);
+    en.setAttribute('aria-pressed', lang === 'en');
+    ja.setAttribute('aria-pressed', lang === 'ja');
+    try{ localStorage.setItem('pref-lang', lang); }catch(e){}
+  }
+  en.addEventListener('click', function(){ set('en'); });
+  ja.addEventListener('click', function(){ set('ja'); });
+  var saved = null;
+  try{ saved = localStorage.getItem('pref-lang'); }catch(e){}
+  set(saved || (navigator.language && navigator.language.indexOf('ja') === 0 ? 'ja' : 'en'));
+})();
+</script>
+
+<script data-goatcounter="https://yoshihito-tsuji.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
