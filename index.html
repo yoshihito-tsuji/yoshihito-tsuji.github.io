@@ -7,39 +7,62 @@
 <title>Yoshihito Tsuji — Future University Hakodate</title>
 <meta name="description" content="Yoshihito Tsuji, Ph.D. (Information Science). Associate Professor, Intelligent Information Science Research Area, Future University Hakodate. Software development and cognitive modeling of explanatory communication.">
 <style>
-  /* ラボのイメージカラー = 高麗納戸 #2c4f54（日本の伝統色・暗い青緑）
-     ダークモードでは同じ色相のまま明度を上げた #7fadb2 に差し替える。
-     #2c4f54 を暗い背景に置くとコントラストが 2.02:1 しか出ず読めないため。 */
+  /* ラボのイメージカラー = 高麗納戸 #2c4f54（日本の伝統色・暗い青緑）を地色に据える。
+     ヘッダとフッタは全幅のベタ面、本文面は高麗納戸を薄めた紙。
+     ダークモードでは同じ色相の深い側へ振る（#2c4f54 は暗い背景上で 2.02:1 しか出ないため、
+     文字色としては明度を上げた #7fadb2 に差し替える）。 */
   :root{
-    --bg:#fbfbfa; --fg:#1c1c1a; --muted:#6b6b63; --rule:#e2e1dc;
-    --accent:#2c4f54;        /* 高麗納戸。対背景 8.62:1 */
-    --accent-weak:#dce8e7;   /* 罫線・カード縁の淡いトーン */
-    --accent-tint:#f2f6f5;   /* ごく淡い面 */
+    --bg:#f4f7f6;            /* 高麗納戸を薄めた紙。本文 #1c1c1a と 15.83:1 */
+    --fg:#1c1c1a;
+    --muted:#5f6f6d;         /* 対紙 4.89:1 */
+    --rule:#d5e3e1;
+    --accent:#2c4f54;        /* 高麗納戸。対紙 8.20:1 */
+    --accent-weak:#cfe0df;
     --card:#ffffff;
+    --band:#2c4f54;          /* 全幅のベタ面 */
+    --on-band:#ffffff;       /* 対ベタ面 8.92:1 */
+    --on-band-2:#cfe0df;     /* 対ベタ面 6.54:1 */
+    --on-band-3:#a3c0bf;     /* 対ベタ面 4.61:1 */
   }
   @media (prefers-color-scheme: dark){
-    :root{ --bg:#16161a; --fg:#e8e8e4; --muted:#9a9a92; --rule:#2b3336;
-           --accent:#7fadb2;      /* 対背景 7.32:1 */
-           --accent-weak:#31474a;
-           --accent-tint:#1b2224;
-           --card:#1d1d22; }
+    :root{
+      --bg:#12191b;          /* 本文 #e6ecea と 14.87:1 */
+      --fg:#e6ecea;
+      --muted:#93a5a3;       /* 6.90:1 */
+      --rule:#2b3c3f;
+      --accent:#7fadb2;      /* 7.22:1 */
+      --accent-weak:#31474a;
+      --card:#182325;
+      --band:#1d3438;
+      --on-band:#eaf2f1;     /* 11.54:1 */
+      --on-band-2:#a9c3c3;   /* 7.05:1 */
+      --on-band-3:#a9c3c3;
+    }
   }
   *{box-sizing:border-box}
   body{
-    margin:0; border-top:4px solid var(--accent); background:var(--bg); color:var(--fg);
+    margin:0; background:var(--bg); color:var(--fg);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
       "Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
     line-height:1.75; font-size:16px;
   }
-  .wrap{max-width:760px; margin:0 auto; padding:0 24px 80px}
-  header{padding:52px 0 28px; border-bottom:2px solid var(--accent-weak)}
-  h1{font-size:1.85rem; margin:0 0 6px; letter-spacing:.01em}
-  h1 .ja{font-size:1.05rem; color:var(--accent); font-weight:500; margin-left:10px}
-  .role{color:var(--muted); margin:0; font-size:.95rem}
-  .role a{color:var(--accent)}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px}
+
+  /* 全幅の高麗納戸のベタ面 */
+  .band{background:var(--band); color:var(--on-band)}
+  header.band{padding:76px 0 56px}
+  footer.band{padding:26px 0 30px; margin-top:64px; color:var(--on-band-3); font-size:.85rem}
+
+  h1{font-size:2.15rem; margin:0 0 8px; letter-spacing:.01em; color:var(--on-band); font-weight:650}
+  h1 .ja{font-size:1.1rem; color:var(--on-band-2); font-weight:500; margin-left:12px}
+  .role{color:var(--on-band-2); margin:0; font-size:.95rem}
+  .role a{color:var(--on-band); border-bottom:1px solid rgba(255,255,255,.45)}
+  .role a:hover{border-bottom-color:var(--on-band)}
+  .band .meta{color:var(--on-band-3)}
+
   h2{
     font-size:1.05rem; letter-spacing:.08em; text-transform:uppercase;
-    margin:48px 0 14px; padding-bottom:6px; border-bottom:2px solid var(--accent-weak);
+    margin:46px 0 14px; padding-bottom:6px; border-bottom:2px solid var(--accent-weak);
     color:var(--accent); font-weight:600;
   }
   h2[lang="ja"]{text-transform:none; letter-spacing:.04em}
@@ -48,33 +71,32 @@
   a:hover{border-bottom-color:currentColor}
   .item{
     background:var(--card); border:1px solid var(--rule);
-    border-left:3px solid var(--accent-weak); border-radius:8px;
+    border-left:4px solid var(--accent); border-radius:8px;
     padding:16px 18px; margin:0 0 12px;
-    transition:border-left-color .18s ease;
   }
-  .item:hover{border-left-color:var(--accent)}
-  .item h3{color:var(--accent)}
-  .item h3{margin:0 0 4px; font-size:1rem}
+  .item h3{margin:0 0 4px; font-size:1rem; color:var(--accent)}
   .item p{margin:0 0 8px; font-size:.93rem; color:var(--fg)}
   .meta{font-size:.85rem; color:var(--muted); margin:0}
   .links{display:flex; flex-wrap:wrap; gap:8px 14px; font-size:.88rem; margin-top:8px}
   ul{margin:0 0 14px; padding-left:1.25em}
   ol{margin:0 0 14px; padding-left:1.4em}
-  ol li::marker{color:var(--accent); font-weight:600}
-  ul li::marker{color:var(--accent)}
   li{margin-bottom:6px}
+  ol li::marker{color:var(--accent); font-weight:700}
+  ul li::marker{color:var(--accent)}
+  .wrap > ul:last-of-type{margin-bottom:0}
+  #contact-mail{font-size:1.02rem}
+
   .toggle{
     position:fixed; top:16px; right:16px; z-index:10;
     background:var(--card); border:1px solid var(--rule); border-radius:999px;
-    padding:6px 4px; display:flex; gap:2px; box-shadow:0 1px 6px rgba(0,0,0,.06);
+    padding:6px 4px; display:flex; gap:2px; box-shadow:0 2px 10px rgba(0,0,0,.18);
   }
   .toggle button{
     border:0; background:transparent; color:var(--muted); cursor:pointer;
     font:inherit; font-size:.82rem; padding:3px 12px; border-radius:999px;
   }
   .toggle button[aria-pressed="true"]{background:var(--accent); color:#fff}
-  footer{margin-top:56px; padding-top:20px; border-top:2px solid var(--accent-weak);
-         font-size:.85rem; color:var(--muted)}
+
   [data-lang]{display:none}
   html[data-active="en"] [data-lang="en"]{display:revert}
   html[data-active="ja"] [data-lang="ja"]{display:revert}
@@ -87,21 +109,23 @@
   <button id="btn-ja" aria-pressed="false">日本語</button>
 </nav>
 
-<div class="wrap">
-
-<header>
-  <h1>Yoshihito Tsuji<span class="ja">辻 義人</span></h1>
-  <p class="role" data-lang="en">
-    Ph.D. (Information Science) &middot; Associate Professor<br>
-    Intelligent Information Science Research Area / Center for Meta-Learning<br>
-    <a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">Future University Hakodate</a>, Hokkaido, Japan
-  </p>
-  <p class="role" data-lang="ja">
-    博士（情報科学）／准教授<br>
-    知能情報科学領域／メタ学習センター<br>
-    <a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">公立はこだて未来大学</a>（北海道・函館）
-  </p>
+<header class="band">
+  <div class="wrap">
+    <h1>Yoshihito Tsuji<span class="ja">辻 義人</span></h1>
+    <p class="role" data-lang="en">
+      Ph.D. (Information Science) &middot; Associate Professor<br>
+      Intelligent Information Science Research Area / Center for Meta-Learning<br>
+      <a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">Future University Hakodate</a>, Hokkaido, Japan
+    </p>
+    <p class="role" data-lang="ja">
+      博士（情報科学）／准教授<br>
+      知能情報科学領域／メタ学習センター<br>
+      <a href="https://www.fun.ac.jp/faculty/tsuji-yoshihito">公立はこだて未来大学</a>（北海道・函館）
+    </p>
+  </div>
 </header>
+
+<div class="wrap">
 
 <h2 data-lang="en">Research</h2>
 <h2 lang="ja" data-lang="ja">研究</h2>
@@ -345,14 +369,16 @@
 <h2 data-lang="en">Contact</h2>
 <h2 lang="ja" data-lang="ja">連絡先</h2>
 
-<p>y-tsuji<span>&#64;</span>fun.ac.jp</p>
-
-<footer>
-  <span data-lang="en">Last updated: September 2026</span>
-  <span data-lang="ja">最終更新：2026年9月</span>
-</footer>
+<p id="contact-mail">y-tsuji<span>&#64;</span>fun.ac.jp</p>
 
 </div>
+
+<footer class="band">
+  <div class="wrap">
+    <span data-lang="en">Last updated: September 2026</span>
+    <span data-lang="ja">最終更新：2026年9月</span>
+  </div>
+</footer>
 
 <script>
 (function(){
