@@ -3,48 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2c4f54">
 <title>Yoshihito Tsuji — Future University Hakodate</title>
 <meta name="description" content="Yoshihito Tsuji, Ph.D. (Information Science). Associate Professor, Intelligent Information Science Research Area, Future University Hakodate. Software development and cognitive modeling of explanatory communication.">
 <style>
+  /* ラボのイメージカラー = 高麗納戸 #2c4f54（日本の伝統色・暗い青緑）
+     ダークモードでは同じ色相のまま明度を上げた #7fadb2 に差し替える。
+     #2c4f54 を暗い背景に置くとコントラストが 2.02:1 しか出ず読めないため。 */
   :root{
     --bg:#fbfbfa; --fg:#1c1c1a; --muted:#6b6b63; --rule:#e2e1dc;
-    --accent:#3a5a78; --card:#ffffff;
+    --accent:#2c4f54;        /* 高麗納戸。対背景 8.62:1 */
+    --accent-weak:#dce8e7;   /* 罫線・カード縁の淡いトーン */
+    --accent-tint:#f2f6f5;   /* ごく淡い面 */
+    --card:#ffffff;
   }
   @media (prefers-color-scheme: dark){
-    :root{ --bg:#16161a; --fg:#e8e8e4; --muted:#9a9a92; --rule:#2e2e34;
-           --accent:#8fb4d4; --card:#1d1d22; }
+    :root{ --bg:#16161a; --fg:#e8e8e4; --muted:#9a9a92; --rule:#2b3336;
+           --accent:#7fadb2;      /* 対背景 7.32:1 */
+           --accent-weak:#31474a;
+           --accent-tint:#1b2224;
+           --card:#1d1d22; }
   }
   *{box-sizing:border-box}
   body{
-    margin:0; background:var(--bg); color:var(--fg);
+    margin:0; border-top:4px solid var(--accent); background:var(--bg); color:var(--fg);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
       "Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
     line-height:1.75; font-size:16px;
   }
   .wrap{max-width:760px; margin:0 auto; padding:0 24px 80px}
-  header{padding:56px 0 28px; border-bottom:1px solid var(--rule)}
+  header{padding:52px 0 28px; border-bottom:2px solid var(--accent-weak)}
   h1{font-size:1.85rem; margin:0 0 6px; letter-spacing:.01em}
-  h1 .ja{font-size:1.05rem; color:var(--muted); font-weight:500; margin-left:10px}
+  h1 .ja{font-size:1.05rem; color:var(--accent); font-weight:500; margin-left:10px}
   .role{color:var(--muted); margin:0; font-size:.95rem}
   .role a{color:var(--accent)}
   h2{
     font-size:1.05rem; letter-spacing:.08em; text-transform:uppercase;
-    margin:48px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--rule);
-    color:var(--muted); font-weight:600;
+    margin:48px 0 14px; padding-bottom:6px; border-bottom:2px solid var(--accent-weak);
+    color:var(--accent); font-weight:600;
   }
   h2[lang="ja"]{text-transform:none; letter-spacing:.04em}
   p{margin:0 0 14px}
   a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
   a:hover{border-bottom-color:currentColor}
   .item{
-    background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    background:var(--card); border:1px solid var(--rule);
+    border-left:3px solid var(--accent-weak); border-radius:8px;
     padding:16px 18px; margin:0 0 12px;
+    transition:border-left-color .18s ease;
   }
+  .item:hover{border-left-color:var(--accent)}
+  .item h3{color:var(--accent)}
   .item h3{margin:0 0 4px; font-size:1rem}
   .item p{margin:0 0 8px; font-size:.93rem; color:var(--fg)}
   .meta{font-size:.85rem; color:var(--muted); margin:0}
   .links{display:flex; flex-wrap:wrap; gap:8px 14px; font-size:.88rem; margin-top:8px}
   ul{margin:0 0 14px; padding-left:1.25em}
+  ol{margin:0 0 14px; padding-left:1.4em}
+  ol li::marker{color:var(--accent); font-weight:600}
+  ul li::marker{color:var(--accent)}
   li{margin-bottom:6px}
   .toggle{
     position:fixed; top:16px; right:16px; z-index:10;
@@ -56,7 +73,7 @@
     font:inherit; font-size:.82rem; padding:3px 12px; border-radius:999px;
   }
   .toggle button[aria-pressed="true"]{background:var(--accent); color:#fff}
-  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);
+  footer{margin-top:56px; padding-top:20px; border-top:2px solid var(--accent-weak);
          font-size:.85rem; color:var(--muted)}
   [data-lang]{display:none}
   html[data-active="en"] [data-lang="en"]{display:revert}
